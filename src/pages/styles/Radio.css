@@ -1,0 +1,113 @@
+.page{
+
+    background-image: url('../../images/1.jpg');
+     width: 82%;
+        min-height: 96vh;
+        float: right;
+        margin-right: 0%;
+        background-size: cover;
+}
+.materia{
+    margin-right: 20%;
+}
+.radios{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-top: 2%;
+    margin-left: 5%;
+}
+.rActual{
+    width: 198px;
+    height: 201px;
+    background-color: rgb(255, 255, 255);
+}
+.shd{
+    background-color:#1D2123;
+    position: relative;width: 100%;
+    min-height: 60vh;
+    opacity: 0.96;
+    display: flex;
+    flex-direction: column;
+}
+.bckg{
+    width: 82%;
+    height: 40vh;
+   
+}
+.Ofusca{
+
+    width: 82%;
+    height: 100vh;
+    position: absolute;
+    background-color: #0b0d0e;
+    opacity: 0.94;
+    
+}
+.content2{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin-top: -15%;
+    margin-bottom: 4%;
+    margin-left: 5%;
+}
+.imgR{
+   width: 23%;
+   height: 27vh;
+   border-radius: 18px;
+   background-image: url('../../images/1.jpg');
+   background-color: aliceblue;
+   background-size: 100% ;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+.Controls{
+    margin-top: 4.5%;
+    margin-left: 10%;
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.play-pause{
+    width: 30%;
+    background-image: url('../../icons/iconmonstr-video-13-240.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.Rradio{
+    float: left;
+    margin-left: 5%;
+}
+.infoRadio{
+    position: relative;
+    color: white;
+    display: inline-flex;
+    flex-direction: row;
+    margin-top: -20%;
+    margin-right: 55%;
+}
+.infoRadio h4{
+    margin-right: 24%;
+}
+.rad{
+    
+    color: white;
+    position: sticky;
+}
+
+.next {
+    width: 150%;
+    height: 150px;
+    background-image: url('../../icons/iconmonstr-media-control-53-240(2).png');
+    background-size: 160px;
+    background-repeat: no-repeat;
+}
+.back {
+    width: 150px;
+    height: 150px;background-image: url('../../icons/iconmonstr-media-control-52-240(22).png');
+    background-size: 160px;
+    background-repeat: no-repeat;
+}

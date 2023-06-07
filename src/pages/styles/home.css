@@ -1,0 +1,39 @@
+*{
+    
+    color: white;
+}
+.cgeralh{
+    width: 82%;
+    min-height: 96vh;
+        float: right;
+        margin-right: 0%;
+        background-color: #1D2123;
+}
+.searchP{
+    margin-top: 3%;
+    margin-left: 2%;
+}
+.conteudo{
+    width: 96%;
+    min-height: 96vh;
+    float: right;
+    margin-top: 0%;
+    margin-right: 2%;
+
+}
+.videos{
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    justify-content: space-between;
+    height: 56vh;
+    gap: 1rem;
+}
+
+.musicas{
+    display: flex;
+        flex-direction: row;
+        overflow: auto;
+        justify-content: space-between;
+        height: 38vh;
+} 
