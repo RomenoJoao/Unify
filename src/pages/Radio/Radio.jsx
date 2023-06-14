@@ -1,6 +1,6 @@
 import React from 'react'
-import ItemLine from '../components/ItemLine';
-import './styles/Radio.css'
+import ItemLine from '../../components/ItemLine';
+import './Radio.css'
 export default function Radio() {
   return (
     <div className="page">
