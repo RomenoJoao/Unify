@@ -36,4 +36,8 @@
         overflow: auto;
         justify-content: space-between;
         height: 38vh;
+        
 } 
+::-webkit-scrollbar {
+    display: none;
+}

@@ -11,7 +11,7 @@ export default function Radio() {
       <div className="content2">
         <div className="imgR"></div>
         <div className="Controls">
-          <div className="play-pause"></div>
+              
         </div>
       </div>
       <div className="Rradio">

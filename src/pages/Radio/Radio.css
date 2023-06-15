@@ -70,12 +70,7 @@
     flex-direction: row;
     justify-content: space-between;
 }
-.play-pause{
-    width: 30%;
-    background-image: url('../../icons/iconmonstr-video-13-240.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-}
+
 
 .Rradio{
     float: left;
@@ -99,15 +94,9 @@
 }
 
 .next {
-    width: 150%;
-    height: 150px;
-    background-image: url('../../icons/iconmonstr-media-control-53-240(2).png');
-    background-size: 160px;
+    
     background-repeat: no-repeat;
 }
 .back {
-    width: 150px;
-    height: 150px;background-image: url('../../icons/iconmonstr-media-control-52-240(22).png');
-    background-size: 160px;
-    background-repeat: no-repeat;
+    
 }
