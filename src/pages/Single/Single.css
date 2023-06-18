@@ -218,7 +218,7 @@
     font-size: 13px;
     margin: 0;
   }
-  
+    
   @media only screen and (max-width:768px) {
     .video_items {
       flex-direction: column;
@@ -227,11 +227,11 @@
     .left1, .left_content {
       width: 750px !important;
     }
-  
-    video {
+    .vvd {
       width: 750px !important;
       height: 40vh !important;
     }
+
   
     .right1, .right_content {
       width: 768px !important;

@@ -8,7 +8,9 @@ import Home from "../pages/Home/Home";
 import Radio from "../pages/Radio/Radio";
 import VideosView from "../pages/video/VideosView";
 import SinglePage from "../pages/Single/Single";
+import Criador from '../pages/Criador/Criador';
 import '../routes/mapa.css'
+import Profile from "../pages/profile/Profile";
 export default function MainRoutes(){
     return(
         <div className="divgeral">
@@ -21,6 +23,8 @@ export default function MainRoutes(){
                         <Route path="/Radio" element={<Radio/>}/>
                         <Route path="/Video" element={<VideosView/>}/>
                         <Route path="/VidTitle" element={<SinglePage/>}/>
+                        <Route path="/Criador" element={<Criador/>}></Route>
+                        <Route path="/Profile" element={<Profile/>}></Route>
                 </Routes>
             </Router>
         </div>

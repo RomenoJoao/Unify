@@ -1,8 +1,9 @@
 import React from "react";
-import capa from "./images/Capa.jpg";
+import capa from "../../images/Capa.jpg";
 import "./Criador.css";
 import logo from "../../images/logo.png";
 import banner from "../../images/transferir.png";
+//import { Link } from "react-router-dom";
 
 function VideoItem({ heading }) {
   return (
@@ -30,7 +31,11 @@ const Criador = () => {
   return (
     <div className="specialChannel">
       <div className="capa">
-        <img className="imgcapa" src={banner} alt="" />
+        <img
+          className="imgcapa"
+          src="https://c8a5e69dfb.clvaw-cdnwnd.com/3ad44d0c60e28cdc1082c5bc17733e5f/200000200-a68e6a68e9/fundo%20capa%20meetups-01.png?ph=c8a5e69dfb"
+          alt=""
+        />
       </div>
       <div className="channelTopContainer">
         <div className="channelTopTop">
@@ -42,10 +47,6 @@ const Criador = () => {
               <h2>5,5mil subscritores</h2>
               <h2>8 vídeos</h2>
             </div>
-          </div>
-
-          <div className="channelButtonContainer">
-            <button className="channelButton">Editar Canal</button>
           </div>
         </div>
       </div>
@@ -86,8 +87,6 @@ const Criador = () => {
           heading="How to make Hotel Booking Website With HTML CSS ......"
         />
       </section>
-      <button className="file-upload-button">Adicionar </button>
-
     </div>
   );
 };

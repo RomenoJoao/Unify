@@ -45,7 +45,7 @@ export default function Menu() {
             </Link>
           </li>
           <li>
-            <Link className="dLink" to={"Perfil"}>
+            <Link className="dLink" to={"/Profile"}>
               {" "}
               <BotaoMenu nome="Minha conta"></BotaoMenu>{" "}
             </Link>

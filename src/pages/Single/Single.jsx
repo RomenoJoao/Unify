@@ -1,6 +1,7 @@
 import React from "react";
 import "./Single.css";
 import SearchBar from "../../components/SearchBar";
+import { Link } from "react-router-dom";
 
 function SinglePage() {
   return (
@@ -11,7 +12,7 @@ function SinglePage() {
       <section className="video_items flex">
         <div className="left1">
           <div className="left_content">
-            <video controls>
+            <video className="vvd" controls>
               <source
                 src="./video/video1.mp4"
                 type="video/mp4"
@@ -62,9 +63,11 @@ function SinglePage() {
 
             {/* video details */}
             <div className="details flex1 border_bottom">
-              <div className="img">
-                <img src="images/logo.png" alt="" />
-              </div>
+              <Link to='/Criador'>
+                <div className="img">
+                  <img src="images/logo.png" alt="" />
+                </div>
+              </Link>
               <div className="heading">
                 <h4>
                   GorkCoder <i className="fa fa-circle-check"></i>

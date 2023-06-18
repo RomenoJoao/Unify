@@ -1,10 +1,12 @@
 body{
-  background-color: #2e3031;
+  background-color: #1D2123;
 }
 
 .specialChannel{
   display: flex;
   flex-direction: column;
+  width: 82%;
+  float: right;
 }
 
 .channelTopContainer {
@@ -25,6 +27,7 @@ body{
    flex: 2;
    align-items: center;
    gap: 15px;
+   margin-left: 1.8%;
 }
 
 .channelPersonImg{
@@ -50,25 +53,11 @@ display: flex;
  color: #fff;
 }
 
-.channelButtonContainer {
-   position: absolute;
-}
 
-.channelButton{
-   position: relative;
-   left: 1250px;
-   padding: 15px;
-   background-color: red;
-   color: white;
-   outline: none;
-   border: none;
-   font-size: 15px;
-   border: 1px solid;
-   cursor: pointer;
-}
 
 .channelBottomVideosTitle{
    margin: 10px 0px;
+   margin-left: 3%;
    font-size: 18px;
    color: #fff;
 }
@@ -131,35 +120,23 @@ display: flex;
 
 .barra{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   font-size: 10px;
  font-family: sans-serif, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans';
 color: #fff;
 }
+
 
 .imgcapa{
 width: 100%;
 height: 200px;
 }   
 
-.file-upload-button{
-  border-radius: 30px;
-  border: none;
-  padding: 10px 15px;
-  margin-top: 30px;
-  margin-left: 500px;
-  cursor: pointer;
-  width: 200px;
-  background-color: #373737;
-  color: white;
-}
 
 
 /*--------------video_items------------*/
 @media screen and (min-width: 768px) {
-  body {
-    padding: 16px 48px 0 96px;
-  }
+  
 
   header {
     padding: 0 48px 0 96px;

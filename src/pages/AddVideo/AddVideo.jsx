@@ -52,12 +52,13 @@ const AddVideo = () => {
 
           <div className="uploadedVideo">
             Vídeo:
-            <iframe
-              src=""
+            {/* <iframe
+            
+              src="" 
               frameborder="0"
               className="uploaded-video"
               width={"250px"}
-            ></iframe>
+            ></iframe> */}
           </div>
         </div>
 
