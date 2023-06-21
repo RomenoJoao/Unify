@@ -1,7 +1,7 @@
 import React from "react";
 import "./Profile.css";
 import logo from "../../images/logo.png";
-import banner from "../../images/transferir.png";
+import { Link } from "react-router-dom";
 //import { Link } from "react-router-dom";
 
 const Profile = () => {
@@ -30,7 +30,10 @@ const Profile = () => {
           <div className="v1">
             <button className="channelButton">Configuracoes</button>
             <button className="channelButton">Editar Canal</button>
-            <button className="channelButton">Adicionar</button>
+            <Link className="channelButton" to={'/Upload'}>
+              {" "}
+              <span>Adicionar</span>
+            </Link>
           </div>
         </div>
       </div>

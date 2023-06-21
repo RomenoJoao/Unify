@@ -3,6 +3,7 @@ import './styles/menu.css'
 import '../components/BotaoMenu'
 import BotaoMenu from '../components/BotaoMenu'
 import { Link } from 'react-router-dom'
+
 export default function Menu() {
   return (
     <div className="corpoM">
@@ -13,39 +14,39 @@ export default function Menu() {
       <div>
         <ul>
           <li>
-            <Link className="dLink" to={"/"}>
+            <Link className="dLink" to={"home"}>
               {" "}
               <BotaoMenu nome="Home"> </BotaoMenu>{" "}
             </Link>
           </li>
 
           <li>
-            <Link className="dLink" to={"/Video"}>
+            <Link className="dLink" to={"Video"}>
               {" "}
               <BotaoMenu nome="Videos"></BotaoMenu>
             </Link>
           </li>
 
           <li>
-            <Link className="dLink" to={"/Musica"}>
+            <Link className="dLink" to={"Musica"}>
               <BotaoMenu nome="Musicas"></BotaoMenu>
             </Link>
           </li>
 
           <li>
-            <Link className="dLink" to={"/Radio"}>
+            <Link className="dLink" to={"Radio"}>
               {" "}
               <BotaoMenu nome="Radio"></BotaoMenu>
             </Link>
           </li>
           <li>
-            <Link className="dLink" to={"/Playlist"}>
+            <Link className="dLink" to={"Playlist"}>
               {" "}
               <BotaoMenu className="dLink" nome="Playlist"></BotaoMenu>
             </Link>
           </li>
           <li>
-            <Link className="dLink" to={"/Profile"}>
+            <Link className="dLink" to={"Profile"}>
               {" "}
               <BotaoMenu nome="Minha conta"></BotaoMenu>{" "}
             </Link>

@@ -1,49 +1,74 @@
-import React from 'react'
-import ItemLine from '../../components/ItemLine';
-import './Radio.css'
-export default function Radio() {
+import React, { Fragment, useState } from "react";
+import { IconButton, CircularProgress } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import ClearIcon from "@mui/icons-material/Clear";
+import styles from "./styles.module.css";
+import { RadioBrowserApi } from "radio-browser-api";
+import Station from "../../components/Station";
+
+const Radio = () => {
+  const [search, setSearch] = useState("Angola");
+  const [results, setResults] = useState({});
+  const [isFetching, setIsFetching] = useState(false);
+  const api = new RadioBrowserApi("SmoothRadio");
+
+  const handleSearch = async ({ currentTarget: input }) => {
+    setSearch(input.value);
+    setResults({});
+    try {
+      setIsFetching(true);
+      // const url =`/?search=${input.value}`;
+      // await axiosInstance.get(url);
+      const data = await api.searchStations({
+        country: search === "" ? 'Angola' :search ,
+        limit: 100,
+      });
+      console.log(data);
+      setResults(data);
+      setIsFetching(false);
+    } catch (error) {
+      console.log(error);
+      setIsFetching(false);
+    }
+  };
+
+
   return (
-    <div className="page">
-      <div className="Ofusca"></div>
-
-      <div className="bckg"></div>
-
-      <div className="content2">
-        <div className="imgR"></div>
-        <div className="Controls">
-              
-        </div>
+    <div className={styles.container}>
+      <div className={styles.search_input_container}>
+        <IconButton>
+          <SearchIcon />
+        </IconButton>
+        <input
+          type="text"
+          placeholder="Pesqise por País"
+          onChange={handleSearch}
+          value={search}
+        />
+        <IconButton onClick={() => setSearch("")}>
+          <ClearIcon />
+        </IconButton>
       </div>
-      <div className="Rradio">
-        <h1 className="rad">Radio Unify</h1>
-
-        <div className="infoRadio">
-          <h4>88.6</h4>
-          <h4>Like</h4>
+      {isFetching && (
+        <div className={styles.progress_container}>
+          <CircularProgress style={{ color: "#673ab7" }} size="5rem" />
         </div>
-      </div>
-      <div className="shd">
-        <div className="radios">
-          <div id="station0">
-            {" "}
-            <ItemLine></ItemLine>{" "}
-          </div>
-          <div id="station1">
-            {" "}
-            <ItemLine></ItemLine>{" "}
-          </div>
-          <div id="station3">
-            {" "}
-            <ItemLine></ItemLine>{" "}
-          </div>
-          <div id="station4">
-            {" "}
-            <ItemLine></ItemLine>{" "}
-          </div>
+      )}
+      {Object.keys(results).length !== 0 && (
+        <div className={styles.results_container}>
+          {results.length !== 0 && (
+            <div className={styles.songs_container}>
+              {results.map((station) => (
+                <Fragment key={station.id}>
+                  <Station station={station} />
+                </Fragment>
+              ))}
+            </div>
+          )}
         </div>
-      </div>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
-        
+      )}
     </div>
   );
-}
+};
+
+export default Radio;

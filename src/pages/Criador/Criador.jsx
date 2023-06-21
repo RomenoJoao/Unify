@@ -2,7 +2,6 @@ import React from "react";
 import capa from "../../images/Capa.jpg";
 import "./Criador.css";
 import logo from "../../images/logo.png";
-import banner from "../../images/transferir.png";
 //import { Link } from "react-router-dom";
 
 function VideoItem({ heading }) {
