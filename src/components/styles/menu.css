@@ -8,6 +8,11 @@
     align-items: center;
     justify-content: center;
 }
+.posiICO{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 ul{
     list-style: none;
     text-decoration: none;
@@ -16,7 +21,7 @@ ul{
 }
 li{
     background-color: #202425;
-    margin-top: 23%;
+    margin-top: 6%;
 }
 
 .dLink{ 
@@ -30,6 +35,7 @@ text-decoration: none;
     height: 13vh;
     margin-left: 23%;
     align-items: center;
-    
-
+}
+.Bsp{
+    margin-right: 2%;
 }

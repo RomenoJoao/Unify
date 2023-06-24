@@ -1,10 +1,13 @@
+
+import './signuo.css'
+
 import React, { useContext } from "react";
-import "./Login.css";
+import "./signuo.css";
 // import "./Mains.js";
 import { AuthContext } from "../../context/AuthContext";
 import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Loading from "../../components/Loading";
 import toast, { Toaster } from "react-hot-toast";
 import { color } from "@mui/system";
@@ -15,7 +18,7 @@ const notify = () =>
     duration: 3000,
   });
 
-function LoginForm() {
+function RegForm() {
   const {
     register,
     handleSubmit,
@@ -29,10 +32,10 @@ function LoginForm() {
     ({ email, password }) => context.signIn({ email, password }),
     {
       onSuccess: () => {
-       notify();
-       setTimeout(() => {
-         navigate("/feed/discovery");
-       }, 3000);
+        notify();
+        setTimeout(() => {
+          navigate("/feed/discovery");
+        }, 3000);
       },
     }
   );
@@ -48,24 +51,45 @@ function LoginForm() {
     });
   };
 
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [password1, setPassword1] = useState("");
+  const [password, setPassword] = useState("");
+
+  const { data, mutate } = useMutation((userData) => api.createUser(userData));
+
   return (
-    <div className="bcL">
-      <div className="bcg1"></div>
+    <div className="bcL1">
+      <div className="bcg2"></div>
       {isLoading && <Loading />}
 
-      <div className="containerForm">
-        <form className="formContent" onSubmit={handleSubmit(onSubmit)}>
+      <div className="containerForm1">
+        <form className="formContent1" onSubmit={handleSubmit(onSubmit)}>
           <label></label>
-          
           <input
-            className="texti"
+            className="texti1"
+            type="text"
+            placeholder="Primeiro Nome"
+            required
+            {...register("Fname")}
+          />
+          <input
+            className="texti1"
+            type="text"
+            placeholder="Ultimo Nome"
+            required
+            {...register("Lname")}
+          />
+          <input
+            className="texti1"
             type="text"
             placeholder="Email"
             required
             {...register("email")}
           />
           <input
-            className="texti"
+            className="texti1"
             type="password"
             placeholder="Password"
             required
@@ -76,12 +100,10 @@ function LoginForm() {
             <input type="checkbox" />
             <span className="">Remember Password</span>
           </div>
-          <button className="env1" type="submit">
-            Sign in
+          <button className="env2" type="submit">
+            Sign Up
           </button>
-          <Link to="signup">
-            <span>Sign Up</span>
-          </Link>
+          <span>Voltar</span>
         </form>
       </div>
       <Toaster />
@@ -89,4 +111,4 @@ function LoginForm() {
   );
 }
 
-export default LoginForm;
+export default RegForm;

@@ -41,7 +41,7 @@ const Radio = () => {
         </IconButton>
         <input
           type="text"
-          placeholder="Pesqise por País"
+          placeholder="Pesquise por País"
           onChange={handleSearch}
           value={search}
         />

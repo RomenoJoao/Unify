@@ -10,6 +10,7 @@ import Profile from "../pages/profile/Profile";
 import LayoutHome from "../components/LayoutHome";
 import LoginForm from "../pages/Login";
 import Upload from "../pages/Adicionar/Upload";
+import RegForm from "../pages/SignUp";
 
 
 export default function MainRoutes() {
@@ -27,6 +28,7 @@ export default function MainRoutes() {
       </Route>
       <Route path="/auth/">
         <Route path="login" element={<LoginForm />} />
+        <Route path="signup" element={<RegForm />} />
       </Route>
     </Routes>
   );

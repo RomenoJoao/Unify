@@ -26,9 +26,9 @@ export default function Upload() {
       return;
     }
 
-    const { file, cp1, cp2 } = data;
-    const { filePath } = await fileUploadMutation.mutateAsync([file, cp1, cp2]);
-    const [fileFilename, capa1Filename, capa2Filename] = filePath.map(
+    const { file, cp1 } = data;
+    const { filePath } = await fileUploadMutation.mutateAsync([file, cp1]);
+    const [fileFilename, capa1Filename] = filePath.map(
       (fileResponse) => fileResponse.filename
     );
     const content = {
@@ -75,18 +75,7 @@ export default function Upload() {
               />
             )}
           />
-          <Controller
-            control={control}
-            name="cp2"
-            render={({ field: { onChange } }) => (
-              <input
-                onChange={(event) => onChange(event.target.files.item(0))}
-                className="cp"
-                name="files"
-                type="file"
-              />
-            )}
-          />
+          
         </div>
         <button className="btnC">Carregar</button>
       </form>

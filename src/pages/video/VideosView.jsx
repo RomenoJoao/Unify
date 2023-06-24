@@ -1,9 +1,18 @@
 import React from "react";
-
 import { Link } from "react-router-dom";
 import "./vidv.css";
 import SearchBar from "../../components/SearchBar";
+import { useQuery, useQueryClient, useMutation } from "react-query";
+import endpoints from "../../api/endpoints";
+
+
+
+
 function VideoItem({ imageUrl, heading, perfilI }) {
+
+  const queryClient = useQueryClient()
+  const {data, datisLoading} = useQuery("getAllContent", endpoints.getAllContent) 
+
   return (
     <div className="video_items">
       <a href="single-page.html">

@@ -1,12 +1,22 @@
-.corposb{
+.corpusb{
     width: 98%;
-    height: 9vh;
-}
- .pesquisaF{
-    width: 98%;
-    height: 6vh;
-    position: relative;
-    border-radius: 15px;
+    height: 7vh;
     background-color: #202425;
     border-style: none;
+    border-radius: 25px;
+}
+ .pesquisaF{
+    width: 92%;
+    height: 7vh;
+    position: relative;
+    background-color: #202425;
+    border-style: none;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1.2rem;
+}
+.corpus1{
+display: flex;
+justify-content: space-around;
 }
