@@ -9,7 +9,7 @@ function createWindow(){
                 height:690,
                 preload: path.join(__dirname,"preloader.js")
         });
-        primeiraJanela.loadURL("http://localhost:3000/");
+        primeiraJanela.loadURL("http://localhost:3001/");
 }
 
 app.whenReady().then(() => {

@@ -4,15 +4,11 @@ import "./vidv.css";
 import SearchBar from "../../components/SearchBar";
 import { useQuery, useQueryClient, useMutation } from "react-query";
 import endpoints from "../../api/endpoints";
+import { useState, useEffect } from "react";
 
-
-
+const url = "http://localhost:3443/api/";
 
 function VideoItem({ imageUrl, heading, perfilI }) {
-
-  const queryClient = useQueryClient()
-  const {data, datisLoading} = useQuery("getAllContent", endpoints.getAllContent) 
-
   return (
     <div className="video_items">
       <a href="single-page.html">
@@ -20,7 +16,7 @@ function VideoItem({ imageUrl, heading, perfilI }) {
       </a>
       <div className="details flex">
         <div className="img">
-          <img   src={perfilI} alt="" />
+          <img src={perfilI} alt="" />
         </div>
         <div className="heading">
           <p>{heading}</p>
@@ -33,7 +29,7 @@ function VideoItem({ imageUrl, heading, perfilI }) {
     </div>
   );
 }
-//
+/*
 const images = [
   "https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
   "https://images.unsplash.com/photo-1542396601-dca920ea2807?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3302&q=80",
@@ -47,22 +43,34 @@ const images = [
   "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/improve-your-business-youtube-thumbnail-design-template-048f462e9ef3f356a9a1992d4e8cd5aa_screen.jpg?ts=1598387935",
   "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/268438562/original/333fafff21630655c243cfeb8a6a2a6684e4a4d7/design-amazing-youtube-thumbnail-in-3-hours.png",
   "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/269297133/original/eeef1282eb2a9bfdc70c7982330914970c5b82b1/amazing-design-3-youtube-thumbnail-in-1-hours.png",
-];
+];*/
 
 function VideosView() {
+  const { data, isLoading, isError, error } = useQuery(["getAllVideo"], () =>
+    endpoints.getAllVideo()
+  );
+
+  if (isLoading) return <span>Carregando...</span>;
+  if (isError) return <span>Erro: {error.message}</span>;
+  console.log("====================================");
+  console.log(data);
+  console.log("====================================");
+  if (data.length === 0) {
+    return <span>Não existe Items dessa categoria</span>;
+  }
+
   return (
     <main className="geralvd">
       <div className="searchPv">
         <SearchBar></SearchBar>
       </div>
-
       <section className="video_content grid">
-        {images.map((videoThumbnail) => (
-          <Link to={"/VidTitle"}>
+        {data.map((video) => (
+          <Link to={"/" + video.id}>
             <VideoItem
-              imageUrl={videoThumbnail}
+              imageUrl={url + "file/" + video.coverpath.split("/")[0]}
               perfilI="https://static.rfstat.com/renderforest/images/v2/landing-pics/youtube-logo/3818.jpg"
-              heading="How to make Hotel Booking Website With HTML CSS ......"
+              heading={video.titulo}
             />
           </Link>
         ))}

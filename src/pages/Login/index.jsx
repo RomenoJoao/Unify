@@ -29,22 +29,18 @@ function LoginForm() {
     ({ email, password }) => context.signIn({ email, password }),
     {
       onSuccess: () => {
-       notify();
-       setTimeout(() => {
-         navigate("/feed/discovery");
-       }, 3000);
+        notify();
+        setTimeout(() => {
+          navigate("/feed/discovery");
+        }, 3000);
       },
     }
   );
 
   const onSubmit = async (data) => {
     console.log(data);
-    await mutateAsync(data).catch((res) => {
-      if (res.response.status === 401) {
-        toast.error("Email ou senha incorretos");
-      } else if (res.response.status === 500) {
-        toast.error("Erro interno do servidor");
-      }
+    await mutateAsync(data).catch((error) => {
+      
     });
   };
 
@@ -56,7 +52,7 @@ function LoginForm() {
       <div className="containerForm">
         <form className="formContent" onSubmit={handleSubmit(onSubmit)}>
           <label></label>
-          
+
           <input
             className="texti"
             type="text"
@@ -79,7 +75,7 @@ function LoginForm() {
           <button className="env1" type="submit">
             Sign in
           </button>
-          <Link to="signup">
+          <Link to="/auth/signup">
             <span>Sign Up</span>
           </Link>
         </form>

@@ -35,14 +35,14 @@ export default function Home() {
       <div className="conteudo">
         <h2>Videos</h2>
         <div className="videos">
-          {images.map((videoThumbnail) => (
-            <VideoH link={videoThumbnail} />
+          {images.map((videoThumbnail, index) => (
+            <VideoH key={index} link={videoThumbnail} />
           ))}
         </div>
         <h2>Musicas</h2>
         <div className="musicas">
-          {images2.map((videoThumbnail) => (
-            <MRHome link={videoThumbnail} />
+          {images2.map((videoThumbnail, index) => (
+            <MRHome key={index} link={videoThumbnail} />
           ))}
         </div>
         <h2>Radios</h2>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
-import { toast } from "react-hot-toast";
+import { toast, Toaster } from "react-hot-toast";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 import api from "../../api/endpoints";
@@ -31,14 +31,16 @@ export default function Upload() {
     const [fileFilename, capa1Filename] = filePath.map(
       (fileResponse) => fileResponse.filename
     );
+   
+
     const content = {
-      title: data.titulo,
+      titulo: data.titulo,
       path: fileFilename,
-      coverPath: capa1Filename,
+      coverpath: capa1Filename,
     };
     await dataMutation.mutateAsync(content);
-    toast.success("Conteúdo criado com sucesso");
-    navigate("/");
+      toast.success("Conteúdo criado com sucesso");
+
   }
 
   return (
@@ -46,7 +48,7 @@ export default function Upload() {
       <form onSubmit={handleSubmit(submit)} className="allUp">
         <div className="cima">
           <p>Titulo:</p>
-          <input {...register("titulo")} className="tituloI" type="text" />
+          <input {...register("titulo")} className="tituloI" type="text" required />
         </div>
         <div className="fics">
           <p>Ficheiro</p>
@@ -75,10 +77,10 @@ export default function Upload() {
               />
             )}
           />
-          
         </div>
         <button className="btnC">Carregar</button>
       </form>
+      <Toaster/>
     </div>
   );
 }

@@ -1,29 +1,71 @@
+import "video-react/dist/video-react.css"; // import css
 import React from "react";
 import "./Single.css";
 import SearchBar from "../../components/SearchBar";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useQuery } from "react-query";
+import endpoints from "../../api/endpoints";
+import { Player, ControlBar, ReplayControl, ForwardControl } from "video-react";
+
+import { useState, useEffect } from "react";
 
 function SinglePage() {
+  const { VidTitle } = useParams();
+  const [videof, setVideof] = useState();
+  const [video, setVideo] = useState({});
+
+  const url = "http://localhost:3443/api/";
+
+  const { data, isLoading, isError, error } = useQuery(["getContent"], () =>
+    endpoints.getContent(VidTitle)
+  );
+
+  if (isLoading) return <span>Carregando...</span>;
+  if (isError) return <span>Erro: {error.message}</span>;
+  if (!data) {
+    return <span>Não existe Items dessa categoria</span>;
+  }
+
+  // useEffect(() => {
+  //   endpoints
+  //     .getContent(VidTitle)
+  //     .then(Response.data)
+  //     .then((data) => {
+  //       setVideo(data);
+
+  //       endpoints
+  //         .getFile(data.path)
+  //         .then(Response.data)
+  //         .then((data2) => {
+  //           setVideof(data2);
+  //         });
+  //     });
+  // }, []);
+
   return (
     <main className="single_pages">
       <div className="searchS">
-        <SearchBar></SearchBar>
+        <SearchBar />
       </div>
       <section className="video_items flex">
         <div className="left1">
           <div className="left_content">
-            <video className="vvd" controls>
+            <Player>
               <source
-                src="./video/video1.mp4"
+                src={url + "file/" + data.path}
                 type="video/mp4"
-                poster="images/video_images/back1.jpg"
+                poster={url + "file/" + data.coverpath}
               />
-            </video>
+              <ControlBar>
+                <ReplayControl seconds={10} order={1.1} />
+                <ForwardControl seconds={30} order={1.2} />
+              </ControlBar>
+            </Player>
 
             {/* video tags */}
             <div className="tag">
               <label className="tags">#web #webdesign #Frontend</label>
-              <p>How to make Hotel Booking Website With HTML CSS ......</p>
+              <p>{data.titulo}</p>
             </div>
             {/* video tags */}
 
@@ -63,7 +105,7 @@ function SinglePage() {
 
             {/* video details */}
             <div className="details flex1 border_bottom">
-              <Link to='/Criador'>
+              <Link to="/Criador">
                 <div className="img">
                   <img src="images/logo.png" alt="" />
                 </div>
@@ -111,14 +153,12 @@ function SinglePage() {
             <div className="details_Comment">
               <div className="details flex1">
                 <div className="img">
-                  <img
-                    src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-user-interface-victoruler-flat-victoruler.png"
-                    alt=""
-                  />
+                  <img src=" " alt="" />
                 </div>
                 <div className="heading">
                   <h4>
-                    RandomGuy&nbsp;&nbsp;<i className="fa fa-circle-check"></i>
+                    RandomGuy&nbsp;&nbsp;
+                    <i className="fa fa-circle-check"></i>
                   </h4>
                   <span>2 years ago</span>
                   <h5>This is an amazing tutorial. Thanks for sharing!</h5>

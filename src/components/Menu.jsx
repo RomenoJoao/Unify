@@ -1,18 +1,30 @@
-import React from 'react'
-import './styles/menu.css'
-import '../components/BotaoMenu'
-import BotaoMenu from '../components/BotaoMenu'
-import { Link } from 'react-router-dom'
-import { Home, VideoFile, LibraryMusic, MusicNote,  AccountBoxRounded, PlaylistPlay } from '@mui/icons-material'
+import React, { useContext } from "react";
+import "./styles/menu.css";
+import "../components/BotaoMenu";
+import BotaoMenu from "../components/BotaoMenu";
+import { Link } from "react-router-dom";
+import {
+  Home,
+  VideoFile,
+  LibraryMusic,
+  MusicNote,
+  PlaylistPlay,
+  Logout,
+  AccountBoxRounded,
+} from "@mui/icons-material";
+import { AuthContext } from "../context/AuthContext";
 
+      //<p className="user-info">@{user.login.username}</p>;
 export default function Menu() {
+  const { logOut, user } = useContext(AuthContext);
+  console.log(user);
   return (
     <div className="corpoM">
       <div className="logotipo">
         <h1>Unify</h1>
       </div>
 
-      <div>
+      <div className="menu-list">
         <ul>
           <li className="posiICO">
             <Home className="Bsp"></Home>
@@ -57,6 +69,12 @@ export default function Menu() {
               {" "}
               <BotaoMenu nome="Minha conta"></BotaoMenu>{" "}
             </Link>
+          </li>
+          <li className="posiICO logout">
+            <Logout className="Bsp"></Logout>
+            <button className="dLink" type="button" onClick={() => logOut()}>
+              <BotaoMenu nome="Sair" ></BotaoMenu>{" "}
+            </button>
           </li>
         </ul>
       </div>

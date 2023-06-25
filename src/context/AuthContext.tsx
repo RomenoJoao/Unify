@@ -5,9 +5,9 @@ import axiosInstance from "../api/axiosinstance.js";
 
 type User = {
   name: string;
-  email: string;
-  avatar?: string;
-  id: string;
+  login: {
+    username: string
+  }
 };
 
 type AuthData = {

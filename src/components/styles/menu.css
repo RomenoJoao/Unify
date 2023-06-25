@@ -1,41 +1,50 @@
-.corpoM{
-    top: 0;
-    width: 18%;
-    height: 100vh;
-    background-color: #202425;
-    position: absolute;
-    position: fixed;
-    align-items: center;
-    justify-content: center;
+.corpoM {
+  top: 0;
+  width: 18%;
+  height: 100vh;
+  background-color: #202425;
+  position: absolute;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
-.posiICO{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.posiICO {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
-ul{
-    list-style: none;
-    text-decoration: none;
-    
-    
+ul {
+  list-style: none;
+  text-decoration: none;
 }
-li{
-    background-color: #202425;
-    margin-top: 6%;
+li {
+  background-color: #202425;
+  margin-top: 6%;
 }
 
-.dLink{ 
-text-decoration: none;
+.dLink {
+  text-decoration: none;
 }
-.logotipo{
+.logotipo {
+  display: flex;
+  width: 100%;
+  height: 13vh;
+  margin-left: 23%;
+  align-items: center;
+}
+.Bsp {
+  margin-right: 2%;
+}
+
+.menu-list {
+  flex: 1;
+}
 
 
-    display: flex;
-    width: 100%;
-    height: 13vh;
-    margin-left: 23%;
-    align-items: center;
-}
-.Bsp{
-    margin-right: 2%;
+.user-info {
+  padding-bottom: 40px;
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding-left: 40px;
 }

@@ -1,19 +1,20 @@
-
-import './signuo.css'
+import "./signuo.css";
 
 import React, { useContext } from "react";
 import "./signuo.css";
 // import "./Mains.js";
+import endpoints from "../../api/endpoints";
 import { AuthContext } from "../../context/AuthContext";
 import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 import Loading from "../../components/Loading";
 import toast, { Toaster } from "react-hot-toast";
-import { color } from "@mui/system";
+import { Link } from "react-router-dom";
+import { UserSchema } from "../../utils/user";
 
 const notify = () =>
-  toast("Boa! Você está logado!", {
+  toast("Registo feito, agora faca login!", {
     icon: "👏",
     duration: 3000,
   });
@@ -22,21 +23,33 @@ function RegForm() {
   const {
     register,
     handleSubmit,
-    //watch,
+    watch,
     formState: { errors },
   } = useForm();
 
-  const context = useContext(AuthContext);
   const navigate = useNavigate();
   const { mutateAsync, isLoading } = useMutation(
-    ({ email, password }) => context.signIn({ email, password }),
+    ({ email, password, name, username, lastname, password_confirmation }) => {
+      endpoints.createUser({
+        email,
+        password,
+        name,
+        username,
+        lastname,
+        password_confirmation,
+      });
+    },
     {
       onSuccess: () => {
         notify();
         setTimeout(() => {
-          navigate("/feed/discovery");
+          navigate("/auth/login");
         }, 3000);
       },
+      onError: (error) => {
+        toast.error(error.response.data.message);
+      },
+
     }
   );
 
@@ -44,20 +57,12 @@ function RegForm() {
     console.log(data);
     await mutateAsync(data).catch((res) => {
       if (res.response.status === 401) {
-        toast.error("Email ou senha incorretos");
+        toast.error("Senha nao coincede");
       } else if (res.response.status === 500) {
         toast.error("Erro interno do servidor");
       }
     });
   };
-
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [password1, setPassword1] = useState("");
-  const [password, setPassword] = useState("");
-
-  const { data, mutate } = useMutation((userData) => api.createUser(userData));
 
   return (
     <div className="bcL1">
@@ -72,14 +77,14 @@ function RegForm() {
             type="text"
             placeholder="Primeiro Nome"
             required
-            {...register("Fname")}
+            {...register("name")}
           />
           <input
             className="texti1"
             type="text"
             placeholder="Ultimo Nome"
             required
-            {...register("Lname")}
+            {...register("lastname")}
           />
           <input
             className="texti1"
@@ -90,20 +95,34 @@ function RegForm() {
           />
           <input
             className="texti1"
+            type="text"
+            placeholder="Nome de Utilizador"
+            required
+            {...register("username")}
+          />
+
+          <input
+            className="texti1"
             type="password"
-            placeholder="Password"
+            placeholder="Palavra-Passe"
             required
             {...register("password")}
           />
+          <input
+            className="texti1"
+            type="password"
+            placeholder="Confirme a Passe"
+            required
+            {...register("password_confirmation")}
+          />
 
-          <div className="divCheck">
-            <input type="checkbox" />
-            <span className="">Remember Password</span>
-          </div>
+          <div className="divCheck"></div>
           <button className="env2" type="submit">
             Sign Up
           </button>
-          <span>Voltar</span>
+          <Link to="/auth/login">
+            <span>Voltar</span>
+          </Link>
         </form>
       </div>
       <Toaster />
