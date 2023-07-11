@@ -21,21 +21,25 @@
     margin-right: 2%;
 
 }
-.videos{
+.videos {
     display: flex;
     flex-direction: row;
     overflow: auto;
     justify-content: space-between;
     height: 56vh;
     gap: 1rem;
+    min-width: 5%;
 }
-
+ 
+.lnkv{
+    text-decoration: none;
+    color: blueviolet;
+}
 .musicas{
+    overflow: auto;
     display: flex;
-        flex-direction: row;
-        overflow: auto;
-        justify-content: space-between;
-        height: 38vh;
+    flex-direction: row;
+    height: 56vh;
         
 } 
 ::-webkit-scrollbar {

@@ -70,6 +70,8 @@ function RegForm() {
       {isLoading && <Loading />}
 
       <div className="containerForm1">
+        <h2>Unify Client</h2>
+        <h4>© Unify 2023, Todos direitos reservados</h4>
         <form className="formContent1" onSubmit={handleSubmit(onSubmit)}>
           <label></label>
           <input
@@ -124,6 +126,7 @@ function RegForm() {
             <span>Voltar</span>
           </Link>
         </form>
+        <div className="rigth1"></div>
       </div>
       <Toaster />
     </div>

@@ -7,6 +7,14 @@ import api from "../../api/endpoints";
 import "./upload.css";
 
 export default function Upload() {
+
+  const notify = () =>
+    toast("Conteudo Adicionado com Sucesso!", {
+      icon: "👏",
+      duration: 3000,
+    });
+
+
   const fileUploadMutation = useMutation((files) => api.uploadFiles(files));
   const dataMutation = useMutation((content) => api.createContent(content));
   const navigate = useNavigate();
@@ -39,7 +47,7 @@ export default function Upload() {
       coverpath: capa1Filename,
     };
     await dataMutation.mutateAsync(content);
-      toast.success("Conteúdo criado com sucesso");
+      toast.success("Conteúdo Adicionado com sucesso");
 
   }
 

@@ -1,0 +1,14 @@
+.playlContent{
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    min-height: 15vh;
+    overflow: auto;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin-top: 3%;
+}
+.espacop{
+    width: 5%;
+    height: 2vh;
+}

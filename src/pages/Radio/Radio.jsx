@@ -10,7 +10,7 @@ const Radio = () => {
   const [search, setSearch] = useState("Angola");
   const [results, setResults] = useState({});
   const [isFetching, setIsFetching] = useState(false);
-  const api = new RadioBrowserApi("SmoothRadio");
+  const api = new RadioBrowserApi("Radio");
 
   const handleSearch = async ({ currentTarget: input }) => {
     setSearch(input.value);

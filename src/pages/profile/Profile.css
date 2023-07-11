@@ -144,10 +144,11 @@ body {
 .barra {
     display: flex;
     justify-content: space-around;
-    font-size: 10px;
+    font-size: 20px;
     font-family: sans-serif, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans';
     color: #fff;
 }
+
 .v1{
     width: 30%;
     display: flex;

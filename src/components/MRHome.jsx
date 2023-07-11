@@ -6,8 +6,6 @@ export default function MRHome (props) {
          <div className="musicac">
               <img src={props.link} alt="" />
          </div>
-         <p>Angola</p>
-         <p className='subt'>Luanda</p>
     </div>
   );
 }

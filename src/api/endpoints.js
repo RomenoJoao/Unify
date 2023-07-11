@@ -33,9 +33,9 @@ async function createUser(data) {
   return response.data;
 }
 
-async function gettAllCommets() {
+async function getAllComments() {
   const response = await axiosInstance.get("/comment");
-  return response;
+  return response.data;
 }
 
 async function createComment(data) {
@@ -68,7 +68,7 @@ export default {
   createContent,
   createUser,
   createComment,
-  gettAllCommets,
+  getAllComments,
   createLike,
   gettAllLikes,
   getContent,

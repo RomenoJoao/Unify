@@ -1,0 +1,18 @@
+
+
+.Mscroll{
+      display: flex;
+        flex-direction: row;
+        overflow: auto;
+        justify-content: space-between;
+        height: 38vh;
+        min-width: 15%;
+    gap: 1rem;
+}
+.lll{
+  
+
+        overflow: auto;
+
+        flex-direction: row;
+}

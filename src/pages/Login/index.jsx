@@ -9,6 +9,7 @@ import Loading from "../../components/Loading";
 import toast, { Toaster } from "react-hot-toast";
 import { color } from "@mui/system";
 
+ // background-image: url('../../images/6.jpeg');
 const notify = () =>
   toast("Boa! Você está logado!", {
     icon: "👏",
@@ -46,10 +47,13 @@ function LoginForm() {
 
   return (
     <div className="bcL">
+      
       <div className="bcg1"></div>
       {isLoading && <Loading />}
 
       <div className="containerForm">
+        <h2>Unify Client</h2>
+        <h4>© Unify 2023, Todos direitos reservados</h4>
         <form className="formContent" onSubmit={handleSubmit(onSubmit)}>
           <label></label>
 
@@ -79,6 +83,9 @@ function LoginForm() {
             <span>Sign Up</span>
           </Link>
         </form>
+        <div className="rigth">
+
+        </div>
       </div>
       <Toaster />
     </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import "./AddVideos.css";
-
+import { Toast } from "react-hot-toast";
 const AddVideo = () => {
   return (
     <div className="file-upload">

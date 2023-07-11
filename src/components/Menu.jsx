@@ -3,6 +3,7 @@ import "./styles/menu.css";
 import "../components/BotaoMenu";
 import BotaoMenu from "../components/BotaoMenu";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 import {
   Home,
   VideoFile,
@@ -12,12 +13,13 @@ import {
   Logout,
   AccountBoxRounded,
 } from "@mui/icons-material";
-import { AuthContext } from "../context/AuthContext";
 
       //<p className="user-info">@{user.login.username}</p>;
 export default function Menu() {
+  
   const { logOut, user } = useContext(AuthContext);
   console.log(user);
+
   return (
     <div className="corpoM">
       <div className="logotipo">

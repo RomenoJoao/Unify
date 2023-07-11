@@ -1,0 +1,23 @@
+
+  .details_Comment h4 {
+    font-weight: 500;
+    font-size: 14px;
+  }
+  
+  .details_Comment h4 span {
+    margin-left: 20px;
+  }
+  
+  .details_Comment p {
+    font-size: 14px;
+    margin: 8px 0;
+  }
+  
+  .details_Comment .icon {
+    margin: 0;
+    margin-right: 30px;
+  }
+    .details_Comment {
+    margin-top: 20px;
+    display: flex;
+  }

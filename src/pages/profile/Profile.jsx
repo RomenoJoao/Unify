@@ -1,10 +1,16 @@
-import React from "react";
+import React,{useContext} from "react";
 import "./Profile.css";
 import logo from "../../images/logo.png";
 import { Link } from "react-router-dom";
+
+import { AuthContext } from "../../context/AuthContext";
+
+      //<p className="user-info">@{user.login.username}</p>;
 //import { Link } from "react-router-dom";
 
 const Profile = () => {
+  const { logOut, user } = useContext(AuthContext);
+  console.log(user);
   return (
     <div className="specialChannel">
       <div className="capa">
@@ -20,9 +26,9 @@ const Profile = () => {
         <div className="channelTopTop">
           <div className="channelPersonContainer">
             <img className="channelPersonImg" src={logo} alt="" />
-            <span className="channelPersonName">Rodrigo</span>
+            <span className="channelPersonName">{user.name}</span>
             <div className="descricao">
-              <h2>@Rodrigo</h2>
+              <h2>@{user.login.username}</h2>
               <h2>5,5mil subscritores</h2>
               <h2>8 vídeos</h2>
             </div>
@@ -30,7 +36,7 @@ const Profile = () => {
           <div className="v1">
             <button className="channelButton">Configuracoes</button>
             <button className="channelButton">Editar Canal</button>
-            <Link className="channelButton" to={'/Upload'}>
+            <Link className="channelButton" to={"/Upload"}>
               {" "}
               <span>Adicionar</span>
             </Link>
@@ -40,10 +46,7 @@ const Profile = () => {
 
       <div className="barra">
         <h2>VIDEOS</h2>
-        <h2>PLAYLIST</h2>
-        <h2>CANAIS</h2>
-        <h2>COMUNIDADE</h2>
-        <h2>ACERCA DE</h2>
+        <h2>MUSICAS</h2>
       </div>
 
       <div className="channelBottomVideosTitle"></div>
