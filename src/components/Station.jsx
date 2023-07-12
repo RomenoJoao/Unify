@@ -2,7 +2,7 @@ import { IconButton } from "@mui/material";
 import React from "react";
 
 import { Pause, PlayArrow } from "@mui/icons-material";
-import styles from "./styles/station.css";
+import "./styles/station.css";
 
 const Station = (station) => {
   const audioPlayerRef = React.useRef(null);
@@ -16,14 +16,14 @@ const Station = (station) => {
   }, [station.isPlaying]);
 
   return (
-    <div className={styles.song_container}>
-      <div className={styles.left}>
-        <IconButton onClick={station.onClick} className={styles.play_btn}>
+    <div className="song_container radio-container">
+      <div className="left">
+        <IconButton onClick={station.onClick} className="play_btn">
           {station.isPlaying ? <Pause /> : <PlayArrow />}
         </IconButton>
         <p>Votos: {station.station.votes}</p>
       </div>
-      <div className={styles.left}>
+      <div className="right">
         <p>{station.station.name}</p>
       </div>
       <audio
