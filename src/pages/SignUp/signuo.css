@@ -1,13 +1,13 @@
 .bcL1{
   width: 100%;
   height: 100vh;
-  background-color: rgb(13, 13, 13);  
+  background-color: rgb(13, 13, 13);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .bcg2{
-  
+
   width: 100%;
   height: 100vh;
   background-image: url('../../images/7.jpg');
@@ -52,7 +52,7 @@ align-items: center;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  
+
 }
 
 .formContent1 {
@@ -78,7 +78,7 @@ align-items: center;
   background-image: url('../../images/7.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  
+
 }
 .rigth1{
   margin-right: 1%;
@@ -95,7 +95,7 @@ align-items: center;
   outline: none;
   background: transparent;
   font-size: 1.1rem;
-  margin-bottom: 15%;
+  margin-bottom: 1rem;
 }
 .env2{
  background-color: rgb(110, 110, 110);
@@ -109,4 +109,11 @@ align-items: center;
 .formContent1 span{
   color: rgb(255, 255, 255);
   font-size: 12px;
+}
+
+.error-field {
+  color: red;
+  font-size: 12px;
+  text-align: center;
+  margin: 0;
 }

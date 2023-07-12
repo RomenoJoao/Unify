@@ -1,15 +1,16 @@
 import "./signuo.css";
 
-import "./signuo.css";
 import React from "react";
 
 // import "./Mains.js";
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 import { useMutation } from "react-query";
 import { Link, useNavigate } from "react-router-dom";
 import endpoints from "../../api/endpoints";
 import Loading from "../../components/Loading";
+import { UserSchema } from "../../utils/user";
 
 const notify = () =>
   toast("Registo feito, agora faca login!", {
@@ -23,7 +24,9 @@ function RegForm() {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    resolver: zodResolver(UserSchema),
+  });
 
   const navigate = useNavigate();
   const { mutateAsync, isLoading } = useMutation(
@@ -77,43 +80,41 @@ function RegForm() {
             className="texti1"
             type="text"
             placeholder="Primeiro Nome"
-            required
             {...register("name")}
           />
+          {errors.name && <p className="error-field">{errors.name.message}</p>}
           <input
             className="texti1"
             type="text"
             placeholder="Ultimo Nome"
-            required
             {...register("lastname")}
           />
+          {errors.lastname && <p className="error-field">{errors.lastname.message}</p>}
           <input
             className="texti1"
             type="text"
             placeholder="Email"
-            required
             {...register("email")}
           />
+          {errors.email && <p className="error-field">{errors.email.message}</p>}
           <input
             className="texti1"
             type="text"
             placeholder="Nome de Utilizador"
-            required
             {...register("username")}
           />
-
+          {errors.username && <p className="error-field">{errors.username.message}</p>}
           <input
             className="texti1"
             type="password"
             placeholder="Palavra-Passe"
-            required
             {...register("password")}
           />
+          {errors.password && <p className="error-field">{errors.password.message}</p>}
           <input
             className="texti1"
             type="password"
             placeholder="Confirme a Passe"
-            required
             {...register("password_confirmation")}
           />
 
