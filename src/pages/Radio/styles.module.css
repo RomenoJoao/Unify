@@ -51,6 +51,9 @@
 
 .container .results_container .songs_container {
     flex: 2;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 2rem;
 }
 
 .container .results_container .playlists_container {

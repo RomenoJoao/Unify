@@ -1,30 +1,36 @@
-import React from 'react'
 import { IconButton } from "@mui/material";
+import React from "react";
 
-import styles from "./styles/station.css";
-import { Radio } from "@mui/icons-material";
-
-import ReactAudioPlayer from "react-audio-player";
+import { Pause, PlayArrow } from "@mui/icons-material";
+import "./styles/station.css";
 
 const Station = (station) => {
-  const handleChange = () => {};
-  //   console.log(station.name);
+  const audioPlayerRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (station.isPlaying) {
+      audioPlayerRef.current.play();
+    } else {
+      audioPlayerRef.current.pause();
+    }
+  }, [station.isPlaying]);
 
   return (
-    <div className={styles.song_container}>
-      <div className={styles.left}>
-        <IconButton onClick={handleChange} className={styles.play_btn}>
-          {/* <PauseIcon /> */}
-          <Radio />
+    <div className="song_container radio-container">
+      <div className="left">
+        <IconButton onClick={station.onClick} className="play_btn">
+          {station.isPlaying ? <Pause /> : <PlayArrow />}
         </IconButton>
-        {/* <img src={Radio} alt="radio_img" /> */}
         <p>Votos: {station.station.votes}</p>
       </div>
-      <div className={styles.left}>
+      <div className="right">
         <p>{station.station.name}</p>
       </div>
-      <ReactAudioPlayer  className='itemRadio' src={station.station.urlResolved} controls />
-      {/* </Link> */}
+      <audio
+        ref={audioPlayerRef}
+        src={station.station.urlResolved}
+        style={{ display: "none" }}
+      ></audio>
     </div>
   );
 };

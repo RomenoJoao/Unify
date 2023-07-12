@@ -1,29 +1,26 @@
-import React, { Fragment, useState } from "react";
-import { IconButton, CircularProgress } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
 import ClearIcon from "@mui/icons-material/Clear";
-import styles from "./styles.module.css";
+import SearchIcon from "@mui/icons-material/Search";
+import { CircularProgress, IconButton } from "@mui/material";
 import { RadioBrowserApi } from "radio-browser-api";
+import React from "react";
 import Station from "../../components/Station";
+import styles from "./styles.module.css";
 
+const api = new RadioBrowserApi("Radio");
 const Radio = () => {
-  const [search, setSearch] = useState("Angola");
-  const [results, setResults] = useState({});
-  const [isFetching, setIsFetching] = useState(false);
-  const api = new RadioBrowserApi("Radio");
+  const [search, setSearch] = React.useState("Angola");
+  const [results, setResults] = React.useState({});
+  const [isFetching, setIsFetching] = React.useState(false);
+  const [playingRadio, setPlayingRadio] = React.useState(-1);
 
-  const handleSearch = async ({ currentTarget: input }) => {
-    setSearch(input.value);
+  const fetchRadio = async () => {
     setResults({});
     try {
       setIsFetching(true);
-      // const url =`/?search=${input.value}`;
-      // await axiosInstance.get(url);
       const data = await api.searchStations({
-        country: search === "" ? 'Angola' :search ,
+        country: search === "" ? "Angola" : search,
         limit: 100,
       });
-      console.log(data);
       setResults(data);
       setIsFetching(false);
     } catch (error) {
@@ -32,6 +29,9 @@ const Radio = () => {
     }
   };
 
+  React.useEffect(() => {
+    fetchRadio();
+  }, [search]);
 
   return (
     <div className={styles.container}>
@@ -42,7 +42,7 @@ const Radio = () => {
         <input
           type="text"
           placeholder="Pesquise por País"
-          onChange={handleSearch}
+          onChange={(e) => setSearch(e.target.value)}
           value={search}
         />
         <IconButton onClick={() => setSearch("")}>
@@ -58,10 +58,19 @@ const Radio = () => {
         <div className={styles.results_container}>
           {results.length !== 0 && (
             <div className={styles.songs_container}>
-              {results.map((station) => (
-                <Fragment key={station.id}>
-                  <Station station={station} />
-                </Fragment>
+              {results.map((station, index) => (
+                <Station
+                  key={station.id}
+                  station={station}
+                  onClick={() => {
+                    if (index === playingRadio) {
+                      setPlayingRadio(-1);
+                    } else {
+                      setPlayingRadio(index);
+                    }
+                  }}
+                  isPlaying={index === playingRadio}
+                />
               ))}
             </div>
           )}
