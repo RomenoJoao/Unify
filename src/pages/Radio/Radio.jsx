@@ -1,26 +1,26 @@
-import React, { Fragment, useState } from "react";
-import { IconButton, CircularProgress } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
+import React from 'react'
 import ClearIcon from "@mui/icons-material/Clear";
-import styles from "./styles.module.css";
+import SearchIcon from "@mui/icons-material/Search";
+import { CircularProgress, IconButton } from "@mui/material";
 import { RadioBrowserApi } from "radio-browser-api";
+import { Fragment, useEffect, useState } from "react";
 import Station from "../../components/Station";
+import styles from "./styles.module.css";
 
+const api = new RadioBrowserApi("Radio");
 const Radio = () => {
   const [search, setSearch] = useState("Angola");
   const [results, setResults] = useState({});
   const [isFetching, setIsFetching] = useState(false);
-  const api = new RadioBrowserApi("Radio");
 
-  const handleSearch = async ({ currentTarget: input }) => {
-    setSearch(input.value);
+  const fetchRadio = async () => {
     setResults({});
     try {
       setIsFetching(true);
       // const url =`/?search=${input.value}`;
       // await axiosInstance.get(url);
       const data = await api.searchStations({
-        country: search === "" ? 'Angola' :search ,
+        country: search === "" ? "Angola" : search,
         limit: 100,
       });
       console.log(data);
@@ -32,6 +32,9 @@ const Radio = () => {
     }
   };
 
+  useEffect(() => {
+    fetchRadio();
+  }, [search]);
 
   return (
     <div className={styles.container}>
@@ -42,7 +45,7 @@ const Radio = () => {
         <input
           type="text"
           placeholder="Pesquise por País"
-          onChange={handleSearch}
+          onChange={(e) => setSearch(e.target.value)}
           value={search}
         />
         <IconButton onClick={() => setSearch("")}>
