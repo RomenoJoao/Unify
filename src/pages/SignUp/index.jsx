@@ -1,17 +1,15 @@
 import "./signuo.css";
 
-import React, { useContext } from "react";
 import "./signuo.css";
+import React from "react";
+
 // import "./Mains.js";
-import endpoints from "../../api/endpoints";
-import { AuthContext } from "../../context/AuthContext";
 import { useForm } from "react-hook-form";
-import { useMutation } from "react-query";
-import { useNavigate } from "react-router-dom";
-import Loading from "../../components/Loading";
 import toast, { Toaster } from "react-hot-toast";
-import { Link } from "react-router-dom";
-import { UserSchema } from "../../utils/user";
+import { useMutation } from "react-query";
+import { Link, useNavigate } from "react-router-dom";
+import endpoints from "../../api/endpoints";
+import Loading from "../../components/Loading";
 
 const notify = () =>
   toast("Registo feito, agora faca login!", {
@@ -31,12 +29,14 @@ function RegForm() {
   const { mutateAsync, isLoading } = useMutation(
     ({ email, password, name, username, lastname, password_confirmation }) => {
       endpoints.createUser({
-        email,
-        password,
         name,
-        username,
         lastname,
         password_confirmation,
+        login: {
+          email,
+          password,
+          username,
+        },
       });
     },
     {
@@ -49,7 +49,6 @@ function RegForm() {
       onError: (error) => {
         toast.error(error.response.data.message);
       },
-
     }
   );
 
