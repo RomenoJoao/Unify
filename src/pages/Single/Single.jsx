@@ -10,56 +10,58 @@ import endpoints from "../../api/endpoints";
 import { Player, ControlBar, ReplayControl, ForwardControl } from "video-react";
 import PlaylistVideo from "../../components/playlistVideo";
 import toast from "react-hot-toast";
-import Coments from "../../components/coments";
+import { Comments } from "../../components/coments";
+import dayjs from "dayjs";
+
 const url = "http://localhost:3443/api/";
 
 function SinglePage() {
   const { VidTitle } = useParams();
 
+  const { data, isLoading, isError, error } = useQuery(["getContent"], () =>
+    endpoints.getContent(VidTitle)
+  );
 
-     const { data, isLoading, isError, error } = useQuery(["getContent"], () =>
-       endpoints.getContent(VidTitle)
-     );
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-     
- const {
-   register,
-   handleSubmit,
-   watch,
-   formState: { errors },
- } = useForm();
-   const { mutateAsync} = useMutation(
-     ({ texto }) => {
-       endpoints.createComment({
-         texto,
-       });
-     },
-     {
-       onSuccess: () => {
-       },
-       onError: (error) => {
-         toast.error(error.response.data.message);
-       },
-     }
-   );
-     const onSubmit = async (data) => {
-       console.log(data);
-       await mutateAsync(data).catch((res) => {
-         if (res.response.status === 200) {
-          
-         } else if (res.response.status === 500) {
-           toast.error("Erro interno do servidor");
-         }
-       });
-     };
-     
+  const { mutateAsync } = useMutation(
+    ({ texto, contentId }) => {
+      endpoints.createComment({
+        texto,
+        contentId,
+      });
+    },
+    {
+      onSuccess: () => {},
+      onError: (error) => {
+        toast.error(error.response.data.message);
+      },
+    }
+  );
+
+  console.log("====================================");
+  console.log(VidTitle);
+  console.log("====================================");
+  const onSubmit = async (data) => {
+    console.log(data);
+    await mutateAsync(data).catch((res) => {
+      if (res.response.status === 200) {
+      } else if (res.response.status === 500) {
+        toast.error("Erro interno do servidor");
+      }
+    });
+  };
+
+  register("contentId", { value: VidTitle });
   if (isLoading) return <span>Carregando...</span>;
   if (isError) return <span>Erro: {error.message}</span>;
   if (!data) {
     return <span>Não existe Items dessa categoria</span>;
   }
-  
-
 
   return (
     <main className="single_pages">
@@ -69,7 +71,7 @@ function SinglePage() {
       <section className="video_item flex">
         <div className="left1">
           <div className="left_content">
-            <Player fluid={false} height={560} width={900} >
+            <Player fluid={false} height={560} width={900}>
               <source
                 src={url + "file/" + data.path}
                 type="video/mp4"
@@ -92,7 +94,9 @@ function SinglePage() {
             {/* total viewer */}
             <div className="view flex2 border_bottom">
               <div className="view-text">
-                <span className="ddtaa">{data.cratedAt}</span>
+                <span className="ddtaa">
+                  {dayjs(data.cratedAt).format("DD/MM/YYYY HH:mm")}
+                </span>
               </div>
 
               <div className="flex1">
@@ -127,7 +131,10 @@ function SinglePage() {
             <div className="details flex1 border_bottom">
               <Link to="/Criador">
                 <div className="img">
-                  <img src="images/logo.png" alt="" />
+                  <img
+                    src={"https://ui-avatars.com/api" + data.author}
+                    alt=""
+                  />
                 </div>
               </Link>
               <div className="heading">
@@ -150,18 +157,29 @@ function SinglePage() {
             {/* video comment by self */}
             <div className="details comment_self flex1">
               <div className="img">
-                <img src="images/logo.png" alt="" />
+                <img src={"https://ui-avatars.com/api" } alt="" />
               </div>
               <form onSubmit={handleSubmit(onSubmit)} className="heading">
-                <input type="text" placeholder="Add a comment...." {...register("texto")} /> 
+                <input
+                  type="text"
+                  placeholder="Add a comment...."
+                  {...register("texto")}
+                />
                 <button type="submit">Comentar</button>
               </form>
             </div>
             {/* video comment by self */}
-               
+
             {/* video comment by other */}
             <div className="details_Comment">
-               <Coments/>
+              {data.comentarios.map((comentario) => (
+                <Comments
+                  key={comentario.id}
+                  name={comentario.authorC}
+                  date={comentario.cratedAt}
+                  texto={comentario.texto}
+                />
+              ))}
             </div>
             {/* video comment by other */}
           </div>

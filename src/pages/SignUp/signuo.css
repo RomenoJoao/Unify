@@ -27,6 +27,12 @@
   font-weight: bold;
 
 }
+.containerForm1 .process1{
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  margin-left: 40%;
+}
 .containerForm1 h4{
   position: absolute;
   bottom: 0;

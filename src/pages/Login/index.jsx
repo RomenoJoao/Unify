@@ -47,11 +47,10 @@ function LoginForm() {
 
   return (
     <div className="bcL">
-      
       <div className="bcg1"></div>
-      {isLoading && <Loading />}
 
       <div className="containerForm">
+        <div className="process">{isLoading && <Loading />}</div>
         <h2>Unify Client</h2>
         <h4>© Unify 2023, Todos direitos reservados</h4>
         <form className="formContent" onSubmit={handleSubmit(onSubmit)}>
@@ -83,9 +82,7 @@ function LoginForm() {
             <span>Sign Up</span>
           </Link>
         </form>
-        <div className="rigth">
-
-        </div>
+        <div className="rigth"></div>
       </div>
       <Toaster />
     </div>

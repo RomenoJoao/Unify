@@ -35,20 +35,7 @@ const Radio = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.search_input_container}>
-        <IconButton>
-          <SearchIcon />
-        </IconButton>
-        <input
-          type="text"
-          placeholder="Pesquise por País"
-          onChange={(e) => setSearch(e.target.value)}
-          value={search}
-        />
-        <IconButton onClick={() => setSearch("")}>
-          <ClearIcon />
-        </IconButton>
-      </div>
+    
       {isFetching && (
         <div className={styles.progress_container}>
           <CircularProgress style={{ color: "#673ab7" }} size="5rem" />

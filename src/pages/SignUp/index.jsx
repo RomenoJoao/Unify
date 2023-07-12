@@ -69,9 +69,9 @@ function RegForm() {
   return (
     <div className="bcL1">
       <div className="bcg2"></div>
-      {isLoading && <Loading />}
 
       <div className="containerForm1">
+      <div className="process1">{isLoading && <Loading />} </div>  
         <h2>Unify Client</h2>
         <h4>© Unify 2023, Todos direitos reservados</h4>
         <form className="formContent1" onSubmit={handleSubmit(onSubmit)}>

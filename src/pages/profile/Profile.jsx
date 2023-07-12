@@ -2,14 +2,15 @@ import React,{useContext} from "react";
 import "./Profile.css";
 import logo from "../../images/logo.png";
 import { Link } from "react-router-dom";
-
+import Aux from "./aux.jsx";
+import AuxO from "./auxO.jsx";
 import { AuthContext } from "../../context/AuthContext";
 
       //<p className="user-info">@{user.login.username}</p>;
 //import { Link } from "react-router-dom";
 
 const Profile = () => {
-  const { logOut, user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   console.log(user);
   return (
     <div className="specialChannel">
@@ -26,9 +27,9 @@ const Profile = () => {
         <div className="channelTopTop">
           <div className="channelPersonContainer">
             <img className="channelPersonImg" src={logo} alt="" />
-            <span className="channelPersonName">{user.name}</span>
+            <span className="channelPersonName"> <Aux/> </span>
             <div className="descricao">
-              <h2>@{user.login.username}</h2>
+              <h2>@<AuxO/> </h2>
               <h2>5,5mil subscritores</h2>
               <h2>8 vídeos</h2>
             </div>

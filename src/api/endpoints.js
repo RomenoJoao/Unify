@@ -61,6 +61,16 @@ async function createLike(data) {
   return response.data;
 }
 
+async function getAudioByUser() {
+  const response = await axiosInstance.get("/conteudo/getAudioByUser");
+  return response.data;
+}
+
+async function getVideoByUser() {
+  const response = await axiosInstance.get("/conteudo/getVideoByUser");
+  return response.data;
+}
+
 export default {
   getAllAudio,
   getAllVideo,
@@ -75,4 +85,6 @@ export default {
   deleteLike,
   deleteComment,
   getFile,
+  getAudioByUser,
+  getVideoByUser,
 };

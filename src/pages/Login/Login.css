@@ -16,6 +16,12 @@
   position: absolute;
   position: fixed;
 }
+.containerForm .process{
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  margin-left: 40%;
+}
 .posF{
   display: flex;
   justify-content: center;
