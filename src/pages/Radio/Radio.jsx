@@ -5,7 +5,7 @@ import { RadioBrowserApi } from "radio-browser-api";
 import React from "react";
 import Station from "../../components/Station";
 import styles from "./styles.module.css";
-
+import Loading from "../../components/Loading";
 const api = new RadioBrowserApi("Radio");
 const Radio = () => {
   const [search, setSearch] = React.useState("Angola");
@@ -38,7 +38,7 @@ const Radio = () => {
     
       {isFetching && (
         <div className={styles.progress_container}>
-          <CircularProgress style={{ color: "#673ab7" }} size="5rem" />
+          <Loading />
         </div>
       )}
       {Object.keys(results).length !== 0 && (

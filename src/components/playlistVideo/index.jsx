@@ -4,13 +4,14 @@ import endpoints from '../../api/endpoints'
 import { useQuery } from 'react-query'
 import { Link } from 'react-router-dom'
 import "./playvideos.css"
+import Loading from '../Loading'
 const url = "http://localhost:3443/api/";
 export default function PlaylistVideo() {
 
  const { data, isLoading, isError, error } = useQuery(["getAllVideo"], () =>
    endpoints.getAllVideo()
  );
-    if(isLoading) return <span>Loading...</span>
+    if(isLoading) return <Loading/>
     if(isError) return <span>{error.message} </span>
     if(!data) return <span>Empty</span>
   return (

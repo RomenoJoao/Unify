@@ -20,6 +20,12 @@ body {
   margin-left: auto;
 }
 
+.center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20vw;
+}
 .video_items {
   border-radius: 10px;
   background-color: #111;

@@ -1,0 +1,16 @@
+.videosUContent{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    min-height: 30vh;
+    overflow: auto;
+    align-items: flex-start;
+    margin-top: 3%;
+}
+.espacop{
+    width: 5%;
+    height: 2vh;
+}
+.space{
+    margin-left: 3%;
+}

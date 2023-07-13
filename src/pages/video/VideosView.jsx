@@ -5,6 +5,7 @@ import SearchBar from "../../components/SearchBar";
 import { useQuery } from "react-query";
 import endpoints from "../../api/endpoints";
 import VideoItem from "../../components/videoItem";
+import Loading from "../../components/Loading";
 const url = "http://localhost:3443/api/";
 
 
@@ -14,7 +15,7 @@ function VideosView() {
     endpoints.getAllVideo()
   );
 
-  if (isLoading) return <span>Carregando...</span>;
+  if (isLoading) return  <div className="center"><Loading/></div> ;
   if (isError) return <span>Erro: {error.message}</span>;
   
   if (data.length === 0) {

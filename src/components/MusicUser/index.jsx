@@ -3,17 +3,17 @@ import { useQuery } from "react-query";
 import endpoints from "../../api/endpoints";
 import Music from "../../components/Music";
 import styles from "./styles.module.css";
+
 import Loading from "../../components/Loading";
 const url = "http://localhost:3443/api/";
 
-export default function Musics() {
+export default function Muser() {
   const [search, setSearch] = useState("");
-  const { data, isLoading, isError, error } = useQuery(["getAllMusic"], () =>
-    endpoints.getAllAudio()
+  const { data, isLoading, isError, error } = useQuery(["getAudioByUser"], () =>
+    endpoints.getAudioByUser()
   );
   const [selectedMusic, setSelectedMusic] = useState(undefined);
 
-  const [results, setResults] = useState({});
 
   const handleSearch = async ({ currentTarget: input }) => {
     setSearch(input.value);
@@ -25,9 +25,9 @@ export default function Musics() {
     }
   };
 
-  if (isLoading) return <div className={styles.center}><Loading/></div>;
+  if (isLoading) return <Loading/>;
   if (isError) return <div>{error.message}</div>;
-
+  if(!data.length) return <span>Sem Musicas</span>
   const playerImage = url
     .concat("file/")
     .concat(selectedMusic ? selectedMusic.coverpath.split("/")[0] : "");
@@ -44,9 +44,13 @@ export default function Musics() {
                     .concat("file/")
                     .concat(music.coverpath.split("/")[0]);
                   return (
-                    <div key={music.id} className={styles.musicItem} onClick={() => {
-                      setSelectedMusic(music)
-                    }}>
+                    <div
+                      key={music.id}
+                      className={styles.musicItem}
+                      onClick={() => {
+                        setSelectedMusic(music);
+                      }}
+                    >
                       <img src={coverImage} alt="" />
                       <div>
                         <p>{music.titulo}</p>
@@ -72,7 +76,7 @@ export default function Musics() {
             </p>
           </div>
           <div className={styles.player}>
-            <Music music={selectedMusic}  />
+            <Music music={selectedMusic} />
           </div>
         </div>
       )}

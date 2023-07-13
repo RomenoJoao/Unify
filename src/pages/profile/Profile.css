@@ -14,7 +14,9 @@ body {
     padding-top: 5px;
 }
 
-
+.specialChannel  .midias{
+    margin-left: 5%;
+}
 
 .channelTopTop {
     display: flex;

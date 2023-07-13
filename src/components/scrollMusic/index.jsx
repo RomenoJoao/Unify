@@ -4,7 +4,7 @@ import "./mm.css"
 import endpoints from "../../api/endpoints";
 import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
-
+import Loading from '../Loading';
 const url = "http://localhost:3443/api/";
 
 
@@ -15,7 +15,7 @@ export default function Mscroll() {
       endpoints.getAllAudio()
     );
 
-    if (isLoadind) return <span>Loading...</span>;
+    if (isLoadind) return <Loading/>;
     if (isError) return <span>{error.message}</span>;
     if (!data) return <span>Empty</span>;
 

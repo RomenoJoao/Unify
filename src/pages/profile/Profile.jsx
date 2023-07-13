@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import Aux from "./aux.jsx";
 import AuxO from "./auxO.jsx";
 import { AuthContext } from "../../context/AuthContext";
-
+import Vuser from "../../components/VideosUser";
+import Muser from "../../components/MusicUser";
       //<p className="user-info">@{user.login.username}</p>;
 //import { Link } from "react-router-dom";
 
@@ -27,9 +28,14 @@ const Profile = () => {
         <div className="channelTopTop">
           <div className="channelPersonContainer">
             <img className="channelPersonImg" src={logo} alt="" />
-            <span className="channelPersonName"> <Aux/> </span>
+            <span className="channelPersonName">
+              {" "}
+              <Aux />{" "}
+            </span>
             <div className="descricao">
-              <h2>@<AuxO/> </h2>
+              <h2>
+                @<AuxO />{" "}
+              </h2>
               <h2>5,5mil subscritores</h2>
               <h2>8 vídeos</h2>
             </div>
@@ -44,12 +50,14 @@ const Profile = () => {
           </div>
         </div>
       </div>
-
+      <h2 className="midias">VIDEOS</h2>
       <div className="barra">
-        <h2>VIDEOS</h2>
-        <h2>MUSICAS</h2>
+        <Vuser />
       </div>
-
+      <h2 className="midias">MUSICAS</h2>
+      <div className="barra">
+        <Muser />
+      </div>
       <div className="channelBottomVideosTitle"></div>
     </div>
   );

@@ -4,7 +4,7 @@ import { Hypnosis } from "react-cssfx-loading";
 export default function Loading() {
   return (
     <div >
-      <Hypnosis  height={200} width={200} color="#890e9d"  />
+      <Hypnosis  height={200} width={200} color="#fff"  />
     </div>
   );
 }
@@ -12,7 +12,7 @@ export default function Loading() {
 export const MiniLoading = () => {
   return (
     <span >
-      <Hypnosis height={200} width={200} color="#890e9d" />
+      <Hypnosis height={200} width={200} color="#fff" />
     </span>
   );
 };
